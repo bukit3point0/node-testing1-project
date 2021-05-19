@@ -27,14 +27,14 @@ describe('[Exercise 2] trimPropertiesMutation', () => {
     const input = { foo: '  foo ', bar: 'bar ', baz: ' baz' }
     const expected = { foo: 'foo', bar: 'bar', baz: 'baz' }
     const actual = utils.trimPropertiesMutation(input)
-    expect(actual).toEqual(input)
+    expect(actual === input)
   })
 })
 
 describe('[Exercise 3] findLargestInteger', () => {
   test('[5] returns the largest number in an array of objects { integer: 2 }', () => {
-    const input = [ {integer: 2}, {integer: 7}, {integer: 5}, {integer: 1} ]
-    const expected = {integer: 7}
+    const input = [ {integer: -2}, {integer: -7}, {integer: -5}, {integer: -1} ]
+    const expected = -1
     const actual = utils.findLargestInteger(input)
     expect(actual).toEqual(expected)
   })
@@ -63,33 +63,49 @@ describe('[Exercise 4] Counter', () => {
 describe('[Exercise 5] Seasons', () => { 
   let seasons
   beforeEach(() => {
-    seasons = new utils.Seasons('summer') // each test must start with fresh seasons
+    seasons = new utils.Seasons(['summer', 'fall', 'winter', 'spring']) // each test must start with fresh seasons
   })
   test('[9] the FIRST call of seasons.next returns "summer"', () => {
     // const testSummer = seasons.next()
     // expect(testSummer).toBe('summer')
-    const testSummer = seasons.next(1)
+    const testSummer = seasons.next() //TODO: take back to summer
     expect(testSummer).toBe('summer')
   })
   test('[10] the SECOND call of seasons.next returns "fall"', () => {
-    const testFall = seasons.next(2)
+    let testFall = ""
+    for(let i=1; i<=2; i++) {
+      testFall = seasons.next()
+    }
+    // const testFall = seasons.next(2)
     expect(testFall).toBe('fall')
   })
   test('[11] the THIRD call of seasons.next returns "winter"', () => {
-    const testWinter = seasons.next(3)
+    let testWinter = ""
+    for(let i=1; i<=3; i++) {
+      testWinter = seasons.next()
+    }
     expect(testWinter).toBe('winter')
   })
   test('[12] the FOURTH call of seasons.next returns "spring"', () => {
-    const testSpring = seasons.next(4)
+    let testSpring = ""
+    for(let i=1; i<=4; i++) {
+      testSpring = seasons.next()
+    }
     expect(testSpring).toBe('spring')
   })
   test('[13] the FIFTH call of seasons.next returns again "summer"', () => {
-    const testSummer5 = seasons.next(5)
-    expect(testSummer5).toBe('summer')
+    let testSummerAt5 = ""
+    for(let i=1; i<=5; i++) {
+      testSummerAt5 = seasons.next()
+    }
+    expect(testSummerAt5).toBe('summer')
   })
   test('[14] the 40th call of seasons.next returns "spring"', () => {
-    const testSpring40 = seasons.next(40)
-    expect(testSpring40).toBe('spring')
+    let testSpringAt40 = ""
+    for(let i=1; i<=40; i++) {
+      testSpringAt40 = seasons.next()
+    }
+    expect(testSpringAt40).toBe('spring')
   })
 })
 

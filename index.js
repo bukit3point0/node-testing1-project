@@ -38,13 +38,13 @@ function trimPropertiesMutation(obj) {
  */
 function findLargestInteger(integers) {
   // ✨ implement
-  var highest = {integer: 0}
+  var highest = integers[0]
   Object.keys(integers).map(int => {
     if (integers[int].integer > highest.integer) {
       highest = integers[int]
     }
   })
-  return highest
+  return highest.integer
 }
 
 class Counter {
@@ -84,9 +84,11 @@ class Seasons {
   /**
    * [Exercise 5A] Seasons creates a seasons object
    */
-  constructor() {
+  constructor(seasons, currentSeason) {
+    //TODO: add constructor parameter
     // ✨ initialize whatever properties are needed
-    this.season = 'summer'
+    this.seasons = seasons
+    this.currentSeason = 'summer'
   }
 
   /**
@@ -101,25 +103,15 @@ class Seasons {
    * seasons.next() // returns "spring"
    * seasons.next() // returns "summer"
    */
-  next(num) {
-    // ✨ implement
-    const seasons = ['summer', 'fall', 'winter', 'spring']
-    const currentSeason = seasons.findIndex(s => {
-      s === this.season
-    })
-    // const currentSeason = seasons.findIndex(s => {
-    //   s === this.season
-    // })
-    let indexNum = num
-    if(Number.isInteger(num/4) && num > 4) {
-      indexNum = 4
-    } else if(num > 4) {
-      indexNum = (num%4)
+  next() {
+    // const seasons = ["spring", "summer", "fall", "winter", "spring"]
+    let nextSeason = this.seasons.findIndex(foo => foo === this.season)
+
+    this.season = this.seasons[nextSeason + 1]
+    if(!this.season) {
+      this.season = 'summer'
     }
 
-    console.log(`index ${currentSeason}`)
-    this.season = seasons[currentSeason + indexNum]
-    console.log(`season ${this.season}`)
     return this.season
   }
 }
