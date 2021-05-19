@@ -108,6 +108,14 @@ class Car {
  */
 function isEvenNumberAsync(number) {
   // ✨ implement
+  if (!number || typeof number !== "number") {
+    throw new Error(`number must be a number`)
+  }
+  if(number%2 === 0) {
+    return true
+  } else {
+    return false
+  }
 }
 
 module.exports = {

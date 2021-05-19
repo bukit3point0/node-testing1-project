@@ -139,8 +139,18 @@ describe('[Exercise 6] Car', () => {
 })
 
 describe('[Exercise 7] isEvenNumberAsync', () => {
-  test.todo('[19] resolves true if passed an even number')
-  test.todo('[20] resolves false if passed an odd number')
-  test.todo('[21] rejects an error with the message "number must be a number" if passed a non-number type')
-  test.todo('[22] rejects an error with the message "number must be a number" if passed NaN')
+  test('[19] resolves true if passed an even number', async () => {
+    const number = await utils.isEvenNumberAsync(42)
+    expect(number).toBe(true)
+  })
+  test('[20] resolves false if passed an odd number', async () => {
+    const number = await utils.isEvenNumberAsync(99)
+    expect(number).toBe(false)
+  })
+  test('[21] rejects an error with the message "number must be a number" if passed a non-number type', async () => {
+    expect(() => utils.isEvenNumberAsync("twelve")).toThrow(`number must be a number`)
+  })
+  test('[22] rejects an error with the message "number must be a number" if passed NaN', async () => {
+    expect(() => utils.isEvenNumberAsync()).toThrow(`number must be a number`)
+  })
 })
