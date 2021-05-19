@@ -60,7 +60,7 @@ describe('[Exercise 4] Counter', () => {
   })
 })
 
-describe('[Exercise 5] Seasons', () => {
+describe('[Exercise 5] Seasons', () => { 
   let seasons
   beforeEach(() => {
     seasons = new utils.Seasons('summer') // each test must start with fresh seasons
