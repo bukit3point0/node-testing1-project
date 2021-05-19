@@ -2,7 +2,6 @@ const utils = require('./index')
 
 describe('[Exercise 1] trimProperties', () => {
   test('[1] returns an object with the properties trimmed', () => {
-    // EXAMPLE
     const input = { foo: '  foo ', bar: 'bar ', baz: ' baz' }
     const expected = { foo: 'foo', bar: 'bar', baz: 'baz' }
     const actual = utils.trimProperties(input)
@@ -43,7 +42,7 @@ describe('[Exercise 3] findLargestInteger', () => {
 describe('[Exercise 4] Counter', () => {
   let counter
   beforeEach(() => {
-    counter = new utils.Counter(3) // each test must start with a fresh couter
+    counter = new utils.Counter(3)
   })
   test('[6] the FIRST CALL of counter.countDown returns the initial count', () => {
     expect(counter.countDown()).toBe(3)
@@ -63,12 +62,10 @@ describe('[Exercise 4] Counter', () => {
 describe('[Exercise 5] Seasons', () => { 
   let seasons
   beforeEach(() => {
-    seasons = new utils.Seasons(['summer', 'fall', 'winter', 'spring']) // each test must start with fresh seasons
+    seasons = new utils.Seasons()
   })
   test('[9] the FIRST call of seasons.next returns "summer"', () => {
-    // const testSummer = seasons.next()
-    // expect(testSummer).toBe('summer')
-    const testSummer = seasons.next() //TODO: take back to summer
+    const testSummer = seasons.next()
     expect(testSummer).toBe('summer')
   })
   test('[10] the SECOND call of seasons.next returns "fall"', () => {
@@ -76,7 +73,6 @@ describe('[Exercise 5] Seasons', () => {
     for(let i=1; i<=2; i++) {
       testFall = seasons.next()
     }
-    // const testFall = seasons.next(2)
     expect(testFall).toBe('fall')
   })
   test('[11] the THIRD call of seasons.next returns "winter"', () => {
