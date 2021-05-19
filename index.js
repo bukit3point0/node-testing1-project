@@ -54,48 +54,36 @@ class Seasons {
 }
 
 class Car {
-  /**
-   * [Exercise 6A] Car creates a car object
-   * @param {string} name - the name of the car
-   * @param {number} tankSize - capacity of the gas tank in gallons
-   * @param {number} mpg - miles the car can drive per gallon of gas
-   */
   constructor(name, tankSize, mpg) {
-    this.odometer = 0 // car initilizes with zero miles
-    this.tank = tankSize // car initiazes full of gas
-    // ✨ initialize whatever other properties are needed
+    this.odometer = 0
+    this.tank = tankSize
+    this.tankSize = tankSize
+    this.mpg = mpg
+    this.name = name
   }
 
-  /**
-   * [Exercise 6B] Car.prototype.drive adds miles to the odometer and consumes fuel according to mpg
-   * @param {string} distance - the distance we want the car to drive
-   * @returns {number} - the updated odometer value
-   *
-   * EXAMPLE
-   * const focus = new Car('focus', 20, 30)
-   * focus.drive(100) // returns 100
-   * focus.drive(100) // returns 200
-   * focus.drive(100) // returns 300
-   * focus.drive(200) // returns 500
-   * focus.drive(200) // returns 600 (ran out of gas after 100 miles)
-   */
   drive(distance) {
-    // ✨ implement
+    if (((this.tank*this.mpg) - distance) >= 0) {
+        this.odometer = this.odometer + distance;
+        this.tank = ((this.tank*this.mpg) - distance)/this.mpg;
+        return this.odometer
+      } else {
+        distance = distance - (this.tank*this.mpg);
+        this.odometer = this.odometer + (this.tank*this.mpg);
+        this.tank = 0;
+        return (`ran out of after ${this.odometer} miles`);
+      }
   }
 
-  /**
-   * [Exercise 6C] Adds gallons to the tank
-   * @param {number} gallons - the gallons of fuel we want to put in the tank
-   * @returns {number} - the miles that can be driven after refueling
-   *
-   * EXAMPLE
-   * const focus = new Car('focus', 20, 30)
-   * focus.drive(600) // returns 600
-   * focus.drive(1) // returns 600 (no distance driven as tank is empty)
-   * focus.refuel(99) // returns 600 (tank only holds 20)
-   */
   refuel(gallons) {
-    // ✨ implement
+    if(this.tank === this.tankSize) {
+      return this.tank
+    } else if ((this.tankSize - this.tank) < gallons) {
+      this.tank = this.tankSize
+    } else {
+      this.tank += this.tank + gallons
+    }
+    return this.tank
   }
 }
 
